@@ -6,7 +6,7 @@ VERSION=2.7
 
 if [ "${FETCH}" ]; then
   if [ ! -d "gperftools-$VERSION" ]; then
-    wget -O gperftools-"$VERSION".tar.gz https://github.com/gperftools/gperftools/releases/download/gperftools-"$VERSION"/gperftools-"$VERSION".tar.gz
+    curl https://github.com/gperftools/gperftools/releases/download/gperftools-"$VERSION"/gperftools-"$VERSION".tar.gz -sLo gperftools-"$VERSION".tar.gz
     tar xf gperftools-"$VERSION".tar.gz
   fi
 else

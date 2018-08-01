@@ -6,7 +6,7 @@ VERSION=2.0.5
 
 if [ "${FETCH}" ]; then
   if [ ! -d "LuaJIT-$VERSION" ]; then
-    wget -O LuaJIT-"$VERSION".tar.gz https://github.com/LuaJIT/LuaJIT/archive/v"$VERSION".tar.gz
+    curl https://github.com/LuaJIT/LuaJIT/archive/v"$VERSION".tar.gz -sLo LuaJIT-"$VERSION".tar.gz
     tar xf LuaJIT-"$VERSION".tar.gz
   fi
 else
@@ -51,13 +51,13 @@ index f7f81a4..e698517 100644
  # Disable the JIT compiler, i.e. turn LuaJIT into a pure interpreter.
  #XCFLAGS+= -DLUAJIT_DISABLE_JIT
 @@ -564,7 +564,7 @@ endif
- 
+
  Q= @
  E= @echo
 -#Q=
 +Q=
  #E= @:
- 
+
  ##############################################################################
 EOF
   patch -p1 < ../luajit_make.diff
