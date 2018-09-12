@@ -2,16 +2,16 @@
 
 set -e
 
-VERSION=0.6.2
+COMMIT=0f9a586ca1dc29c2ecb8dd715a315b93e3f40f79 # 2018-06-30
 
 if [ "${FETCH}" ]; then
   if [ ! -d "yaml-cpp-yaml-cpp-$VERSION" ]; then
-    curl https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-"$VERSION".tar.gz -sLo yaml-cpp-"$VERSION".tar.gz
-    tar xf yaml-cpp-"$VERSION".tar.gz
+    curl https://github.com/jbeder/yaml-cpp/archive/"$COMMIT".tar.gz -sLo yaml-cpp-"$COMMIT".tar.gz
+    tar xf yaml-cpp-"$COMMIT".tar.gz
   fi
 else
-  cp -rf ${RECIPES_DIR}/yaml-cpp-yaml-cpp-"$VERSION" .
-  cd yaml-cpp-yaml-cpp-"$VERSION"
+  cp -rf ${RECIPES_DIR}/yaml-cpp-"$COMMIT" .
+  cd yaml-cpp-"$COMMIT"
 
   mkdir build
   cd build
@@ -32,6 +32,5 @@ else
     -DYAML_CPP_BUILD_TESTS=off \
     -DCMAKE_BUILD_TYPE="$build_type" \
     ..
-  ninja
   ninja install
 fi
