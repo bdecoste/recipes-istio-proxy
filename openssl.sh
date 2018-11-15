@@ -18,3 +18,7 @@ if [ "${FETCH}" ]; then
 fi
 
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! openssl recipe $(pwd)"
+
+/usr/bin/cp -rf istio-proxy-openssl/* proxy
+/usr/bin/cp -rf envoy-proxy-openssl/* bazel/base/external/envoy
+
